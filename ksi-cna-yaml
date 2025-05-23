@@ -1,4 +1,4 @@
-"KSI-CNA:
+KSI-CNA:
   name: Cloud Native Architecture
   objective: A secure cloud service offering will use cloud native architecture and design principles to enforce and enhance the Confidentiality, Integrity and Availability of the system.
   related_nist_controls:
@@ -59,4 +59,3 @@
       evidence:
         - Uptime dashboards
         - HA architecture documentation
-"
