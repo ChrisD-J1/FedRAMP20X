@@ -1,0 +1,58 @@
+KSI-IAM:
+  name: Identity and Access Management
+  objective: >
+    Protect user data, control access, and implement zero trust practices.
+  related_nist_controls:
+    - AC-2
+    - AC-3
+    - AU-9
+    - AC-14
+    - IA-2
+    - IA-2(1)
+    - IA-2(2)
+    - IA-2(8)
+    - IA-2(12)
+    - IA-4
+    - IA-5
+    - IA-5(1)
+    - IA-6
+    - IA-8
+    - IA-8(1)
+    - IA-8(2)
+    - IA-8(4)
+    - IA-11
+    - PS-2
+    - PS-3
+    - PS-4
+    - PS-5
+    - PS-7
+    - PS-9
+  validation_requirements:
+    - id: KSI-IAM-01
+      description: Enforce phishing-resistant multi-factor authentication (MFA)
+      control_information: Enforces MFA methods resistant to phishing, such as hardware tokens or app-based authenticators.
+      evidence:
+        - MFA configuration reports
+        - Authentication logs
+
+    - id: KSI-IAM-02
+      description: Enforce strong passwords
+      control_information: Implements policies requiring complexity, expiration, and reuse restrictions on passwords.
+      evidence:
+        - Password policy documentation
+        - Audit logs
+
+    - id: KSI-IAM-03
+      description: Use secure API authentication methods via industry standard protocols
+      control_information: Uses OAuth2, OpenID Connect, or similar protocols to secure API authentication and authorization.
+      evidence:
+        - API gateway logs
+        - Authentication method configurations
+
+    - id: KSI-IAM-04
+      description: Use a least-privileged, role-based, and just-in-time security model
+      control_information: Enforces RBAC with minimal necessary privileges and JIT access provisioning for elevated rights.
+      evidence:
+        - Access control reports
+        - Role definitions
+        - Access reviews
