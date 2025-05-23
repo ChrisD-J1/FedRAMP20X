@@ -1,0 +1,87 @@
+{
+  ""KSI-SC"": {
+    ""name"": ""Service Configuration"",
+    ""objective"": ""Enforce the use of approved cryptography, continuously verify component integrity, and restrict access to external services."",
+    ""related_nist_controls"": [
+      ""CM-2"",
+      ""CM-4"",
+      ""CM-8"",
+      ""IA-7"",
+      ""RA-7"",
+      ""SC-8"",
+      ""SC-8(1)"",
+      ""SC-13"",
+      ""SC-28"",
+      ""SC-28(1)"",
+      ""SI-3"",
+      ""SI-4""
+    ],
+    ""validation_requirements"": [
+      {
+        ""id"": ""KSI-SC-01"",
+        ""description"": ""Harden and review network and system configurations"",
+        ""control_information"": ""Automatically collects and monitors system/network configuration baselines, alerts on drift or changes."",
+        ""evidence"": [
+          ""Configuration files"",
+          ""Review logs"",
+          ""Vulnerability scan results""
+        ]
+      },
+      {
+        ""id"": ""KSI-SC-02"",
+        ""description"": ""Encrypt all network traffic"",
+        ""control_information"": ""Continuously verifies TLS/SSL configurations and network encryption in transit."",
+        ""evidence"": [
+          ""Network traffic encryption configs"",
+          ""Certificate reports""
+        ]
+      },
+      {
+        ""id"": ""KSI-SC-03"",
+        ""description"": ""Encrypt all federal and sensitive information at rest"",
+        ""control_information"": ""Validates use of approved encryption algorithms and verifies encryption at rest settings."",
+        ""evidence"": [
+          ""Encryption key lifecycle records"",
+          ""Audit reports""
+        ]
+      },
+      {
+        ""id"": ""KSI-SC-04"",
+        ""description"": ""Manage configuration centrally"",
+        ""control_information"": ""Tracks centralized configuration management tool outputs and changes."",
+        ""evidence"": [
+          ""CMDB exports"",
+          ""Change logs"",
+          ""Configuration management reports""
+        ]
+      },
+      {
+        ""id"": ""KSI-SC-05"",
+        ""description"": ""Enforce system and component integrity through cryptographic means"",
+        ""control_information"": ""Verifies cryptographic hashes and signatures for software and system components."",
+        ""evidence"": [
+          ""Hash verification logs"",
+          ""Integrity check reports""
+        ]
+      },
+      {
+        ""id"": ""KSI-SC-06"",
+        ""description"": ""Use a key management capability to execute regular rotation of digital keys"",
+        ""control_information"": ""Monitors key rotation schedules and compliance with key management policies."",
+        ""evidence"": [
+          ""Key rotation logs"",
+          ""KMS reports""
+        ]
+      },
+      {
+        ""id"": ""KSI-SC-07"",
+        ""description"": ""Use a consistent, risk-informed approach for applying security patches"",
+        ""control_information"": ""Tracks patch management policies and deployment across all systems based on risk prioritization."",
+        ""evidence"": [
+          ""Patch reports"",
+          ""Vulnerability assessment outputs""
+        ]
+      }
+    ]
+  }
+}
