@@ -1,0 +1,75 @@
+{
+  ""KSI-CNA"": {
+    ""name"": ""Cloud Native Architecture"",
+    ""objective"": ""A secure cloud service offering will use cloud native architecture and design principles to enforce and enhance the Confidentiality, Integrity and Availability of the system."",
+    ""related_nist_controls"": [""SC-5"", ""SC-7"", ""SC-12"", ""SC-39"", ""SR-12""],
+    ""validation_requirements"": [
+      {
+        ""id"": ""KSI-CNA-01"",
+        ""description"": ""Have denial of service (DoS) protection"",
+        ""control_information"": ""Cloud infrastructure includes DDoS protection via native services and automated rate limiting."",
+        ""evidence"": [
+          ""DDoS protection configurations"",
+          ""Service logs""
+        ]
+      },
+      {
+        ""id"": ""KSI-CNA-02"",
+        ""description"": ""Configure firewalls/proxy servers to limit inbound and outbound traffic"",
+        ""control_information"": ""Firewalls and proxies are configured with strict traffic rules, limiting access based on IP, ports, and protocols."",
+        ""evidence"": [
+          ""Firewall rule sets"",
+          ""Proxy configs"",
+          ""Audit logs""
+        ]
+      },
+      {
+        ""id"": ""KSI-CNA-03"",
+        ""description"": ""Use immutable containers and serverless functions with strictly defined functionality and privileges"",
+        ""control_information"": ""CI/CD pipelines deploy immutable containers with least-privilege execution policies defined in code."",
+        ""evidence"": [
+          ""Deployment scripts"",
+          ""IAM roles"",
+          ""Dockerfiles"",
+          ""Serverless configs""
+        ]
+      },
+      {
+        ""id"": ""KSI-CNA-04"",
+        ""description"": ""Design systems as logically segmented micro-services to minimize the attack surface"",
+        ""control_information"": ""Systems are decomposed into services with minimal shared access, using service mesh for communication controls."",
+        ""evidence"": [
+          ""Architecture diagrams"",
+          ""Service mesh policies""
+        ]
+      },
+      {
+        ""id"": ""KSI-CNA-05"",
+        ""description"": ""Use cloud native virtual networks and related capabilities to enforce logical traffic flow controls"",
+        ""control_information"": ""Virtual private clouds (VPCs), subnets, and routing tables are designed to restrict communication pathways."",
+        ""evidence"": [
+          ""VPC topology diagrams"",
+          ""Routing rules""
+        ]
+      },
+      {
+        ""id"": ""KSI-CNA-06"",
+        ""description"": ""Execute continuous scanning of cloud native system components"",
+        ""control_information"": ""Cloud-native scanning tools automatically assess container images and infrastructure for known vulnerabilities."",
+        ""evidence"": [
+          ""Vulnerability scan reports"",
+          ""Scanning tool logs""
+        ]
+      },
+      {
+        ""id"": ""KSI-CNA-07"",
+        ""description"": ""Use high availability design principles to maximize uptime"",
+        ""control_information"": ""Redundant deployments, auto-scaling, and multi-zone architecture ensure resilience."",
+        ""evidence"": [
+          ""Uptime dashboards"",
+          ""HA architecture documentation""
+        ]
+      }
+    ]
+  }
+}
