@@ -1,0 +1,118 @@
+{
+  "ksi_validations": [
+    {
+      "ksi_id": "KSI-MLA-01",
+      "description": "Operate a SIEM or similar system for centralized, tamper-resistant logging.",
+      "status": "True",
+      "method": "Automated",
+      "validation_criteria": [
+        {
+          "id": "FRR-KSI-MLA-01",
+          "description": "Use a centralized SIEM or equivalent logging system that prevents tampering."
+        }
+      ],
+      "evidence": {
+        "query_language": "J1QL",
+        "query": "Find siem_system where centralized = true and tamper_resistant = true",
+        "query_nlp": "Find SIEM systems that are centrally managed and tamper-resistant.",
+        "result_summary": "SIEM system ensures centralized, tamper-resistant logging of events.",
+        "data_link": "https://compliance.jupiterone.com/fedramp20x/reports/ksi-mla-01.json"
+      }
+    },
+    {
+      "ksi_id": "KSI-MLA-02",
+      "description": "Regularly review and audit logs.",
+      "status": "True",
+      "method": "Automated",
+      "validation_criteria": [
+        {
+          "id": "FRR-KSI-MLA-02",
+          "description": "Perform regular log review and audit processes."
+        }
+      ],
+      "evidence": {
+        "query_language": "J1QL",
+        "query": "Find log_review where frequency <= 'daily' and reviewed_by != null",
+        "query_nlp": "Identify logs that are reviewed at least daily and are assigned to reviewers.",
+        "result_summary": "Logs are reviewed daily with assigned responsibility.",
+        "data_link": "https://compliance.jupiterone.com/fedramp20x/reports/ksi-mla-02.json"
+      }
+    },
+    {
+      "ksi_id": "KSI-MLA-03",
+      "description": "Rapidly detect and remediate or mitigate vulnerabilities.",
+      "status": "True",
+      "method": "Automated",
+      "validation_criteria": [
+        {
+          "id": "FRR-KSI-MLA-03",
+          "description": "Detect and remediate vulnerabilities promptly."
+        }
+      ],
+      "evidence": {
+        "query_language": "J1QL",
+        "query": "Find vulnerability where detection_time <= 24h and (status = 'remediated' or status = 'mitigated')",
+        "query_nlp": "Find vulnerabilities detected within 24 hours that have been remediated or mitigated.",
+        "result_summary": "Vulnerabilities are detected and addressed within 24 hours.",
+        "data_link": "https://compliance.jupiterone.com/fedramp20x/reports/ksi-mla-03.json"
+      }
+    },
+    {
+      "ksi_id": "KSI-MLA-04",
+      "description": "Perform authenticated vulnerability scanning on information resources.",
+      "status": "True",
+      "method": "Automated",
+      "validation_criteria": [
+        {
+          "id": "FRR-KSI-MLA-04",
+          "description": "Use authenticated scans to detect vulnerabilities in resources."
+        }
+      ],
+      "evidence": {
+        "query_language": "J1QL",
+        "query": "Find vulnerability_scan where authenticated = true and frequency <= 'weekly'",
+        "query_nlp": "Identify information resources scanned weekly using authenticated scanning methods.",
+        "result_summary": "Weekly authenticated vulnerability scans are performed on resources.",
+        "data_link": "https://compliance.jupiterone.com/fedramp20x/reports/ksi-mla-04.json"
+      }
+    },
+    {
+      "ksi_id": "KSI-MLA-05",
+      "description": "Perform IaC and configuration evaluation and testing.",
+      "status": "True",
+      "method": "Automated",
+      "validation_criteria": [
+        {
+          "id": "FRR-KSI-MLA-05",
+          "description": "Evaluate and test infrastructure as code and configuration before deployment."
+        }
+      ],
+      "evidence": {
+        "query_language": "J1QL",
+        "query": "Find iac_configuration where evaluation.enabled = true and testing.enabled = true",
+        "query_nlp": "Find infrastructure as code configurations that are evaluated and tested before deployment.",
+        "result_summary": "IaC configurations are evaluated and tested for compliance and security.",
+        "data_link": "https://compliance.jupiterone.com/fedramp20x/reports/ksi-mla-05.json"
+      }
+    },
+    {
+      "ksi_id": "KSI-MLA-06",
+      "description": "Centrally track and prioritize mitigation of vulnerabilities.",
+      "status": "True",
+      "method": "Automated",
+      "validation_criteria": [
+        {
+          "id": "FRR-KSI-MLA-06",
+          "description": "Use centralized tracking and prioritization for vulnerability management."
+        }
+      ],
+      "evidence": {
+        "query_language": "J1QL",
+        "query": "Find vulnerability where tracking.centralized = true and priority in ('high', 'critical') and remediation.tracked = true",
+        "query_nlp": "Find vulnerabilities that are centrally tracked and prioritized as high or critical, with remediation actively tracked.",
+        "result_summary": "High/critical vulnerabilities are centrally tracked and prioritized for remediation.",
+        "data_link": "https://compliance.jupiterone.com/fedramp20x/reports/ksi-mla-06.json"
+      }
+    }
+  ]
+}
