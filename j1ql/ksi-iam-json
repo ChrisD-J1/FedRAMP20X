@@ -1,0 +1,118 @@
+{
+  "ksi_validations": [
+    {
+      "ksi_id": "KSI-IAM-01",
+      "description": "Enforce phishing-resistant MFA for all user authentication.",
+      "status": "True",
+      "method": "Automated",
+      "validation_criteria": [
+        {
+          "id": "FRR-KSI-IAM-01",
+          "description": "Use phishing-resistant MFA for user authentication."
+        }
+      ],
+      "evidence": {
+        "query_language": "J1QL",
+        "query": "Find user where mfa.enabled = true and mfa.type = 'phishing-resistant'",
+        "query_nlp": "Identify all users who have phishing-resistant multi-factor authentication enabled.",
+        "result_summary": "All users have phishing-resistant MFA configured.",
+        "data_link": "https://compliance.jupiterone.com/fedramp20x/reports/ksi-iam-01.json"
+      }
+    },
+    {
+      "ksi_id": "KSI-IAM-02",
+      "description": "Use secure passwordless methods or enforce strong passwords with MFA.",
+      "status": "True",
+      "method": "Automated",
+      "validation_criteria": [
+        {
+          "id": "FRR-KSI-IAM-02",
+          "description": "Enforce secure passwordless or strong password + MFA authentication."
+        }
+      ],
+      "evidence": {
+        "query_language": "J1QL",
+        "query": "Find user where (authentication.method = 'passwordless' or (password.strength = 'strong' and mfa.enabled = true))",
+        "query_nlp": "Find users who authenticate using secure passwordless methods or use strong passwords with MFA enabled.",
+        "result_summary": "Users authenticate with secure passwordless methods or strong passwords with MFA.",
+        "data_link": "https://compliance.jupiterone.com/fedramp20x/reports/ksi-iam-02.json"
+      }
+    },
+    {
+      "ksi_id": "KSI-IAM-03",
+      "description": "Enforce secure authentication for non-user accounts and services.",
+      "status": "True",
+      "method": "Automated",
+      "validation_criteria": [
+        {
+          "id": "FRR-KSI-IAM-03",
+          "description": "Use secure authentication for service and non-user accounts."
+        }
+      ],
+      "evidence": {
+        "query_language": "J1QL",
+        "query": "Find service_account where authentication.method in ('certificate', 'token', 'key') and authentication.secure = true",
+        "query_nlp": "Find non-user service accounts using secure authentication methods such as certificates, tokens, or keys.",
+        "result_summary": "Service accounts use secure and validated authentication mechanisms.",
+        "data_link": "https://compliance.jupiterone.com/fedramp20x/reports/ksi-iam-03.json"
+      }
+    },
+    {
+      "ksi_id": "KSI-IAM-04",
+      "description": "Use least-privileged, role/attribute-based, and just-in-time access models.",
+      "status": "True",
+      "method": "Automated",
+      "validation_criteria": [
+        {
+          "id": "FRR-KSI-IAM-04",
+          "description": "Access controls follow least privilege, role/attribute-based, and just-in-time models."
+        }
+      ],
+      "evidence": {
+        "query_language": "J1QL",
+        "query": "Find access_policy where privilege = 'least' and model in ('role-based', 'attribute-based') and access.jit = true",
+        "query_nlp": "Identify access policies that enforce least privilege with role-based or attribute-based controls and just-in-time access.",
+        "result_summary": "Access controls follow least-privilege, RBAC/ABAC, and JIT principles.",
+        "data_link": "https://compliance.jupiterone.com/fedramp20x/reports/ksi-iam-04.json"
+      }
+    },
+    {
+      "ksi_id": "KSI-IAM-05",
+      "description": "Apply zero trust design principles.",
+      "status": "True",
+      "method": "Automated",
+      "validation_criteria": [
+        {
+          "id": "FRR-KSI-IAM-05",
+          "description": "Security architecture follows zero trust principles."
+        }
+      ],
+      "evidence": {
+        "query_language": "J1QL",
+        "query": "Find policy where architecture.design = 'zero-trust' and enforcement.enabled = true",
+        "query_nlp": "Identify policies that enforce a zero trust security architecture.",
+        "result_summary": "Zero trust principles are applied and enforced throughout the system.",
+        "data_link": "https://compliance.jupiterone.com/fedramp20x/reports/ksi-iam-05.json"
+      }
+    },
+    {
+      "ksi_id": "KSI-IAM-06",
+      "description": "Automatically secure privileged accounts during suspicious activity.",
+      "status": "True",
+      "method": "Automated",
+      "validation_criteria": [
+        {
+          "id": "FRR-KSI-IAM-06",
+          "description": "Privileged accounts are secured in response to suspicious activity."
+        }
+      ],
+      "evidence": {
+        "query_language": "J1QL",
+        "query": "Find user where privilege = 'admin' and incident_response.automated = true and incident_response.trigger = 'suspicious_activity'",
+        "query_nlp": "Identify privileged users whose accounts are automatically secured upon detection of suspicious activity.",
+        "result_summary": "Privileged accounts are automatically secured when anomalies are detected.",
+        "data_link": "https://compliance.jupiterone.com/fedramp20x/reports/ksi-iam-06.json"
+      }
+    }
+  ]
+}
