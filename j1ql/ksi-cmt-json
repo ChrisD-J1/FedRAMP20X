@@ -1,0 +1,99 @@
+{
+  "ksi_validations": [
+    {
+      "ksi_id": "KSI-CMT-01",
+      "description": "Log and monitor system modifications",
+      "status": "True",
+      "method": "Automated",
+      "validation_criteria": [
+        {
+          "id": "FRR-KSI-CMT-01",
+          "description": "System modifications must be logged and monitored."
+        }
+      ],
+      "evidence": {
+        "query_language": "J1QL",
+        "query": "Find system_change where logged = true and monitored = true",
+        "query_nlp": "Identify system changes that are both logged and monitored for audit and review.",
+        "result_summary": "All system modifications are logged and actively monitored.",
+        "data_link": "https://compliance.jupiterone.com/fedramp20x/reports/ksi-cmt-01.json"
+      }
+    },
+    {
+      "ksi_id": "KSI-CMT-02",
+      "description": "Execute changes through redeployment of version controlled immutable resources rather than direct modification wherever possible",
+      "status": "True",
+      "method": "Automated",
+      "validation_criteria": [
+        {
+          "id": "FRR-KSI-CMT-02",
+          "description": "Changes should be made by redeploying version-controlled immutable infrastructure."
+        }
+      ],
+      "evidence": {
+        "query_language": "J1QL",
+        "query": "Find deployment where method = 'redeploy' and source.version_controlled = true and resource.immutable = true",
+        "query_nlp": "Identify deployments that use immutable resources managed via version control and deployed through redeployment.",
+        "result_summary": "All changes are applied via redeployment of version-controlled, immutable resources.",
+        "data_link": "https://compliance.jupiterone.com/fedramp20x/reports/ksi-cmt-02.json"
+      }
+    },
+    {
+      "ksi_id": "KSI-CMT-03",
+      "description": "Implement automated testing and validation of changes prior to deployment",
+      "status": "True",
+      "method": "Automated",
+      "validation_criteria": [
+        {
+          "id": "FRR-KSI-CMT-03",
+          "description": "Changes must undergo automated testing and validation before being deployed."
+        }
+      ],
+      "evidence": {
+        "query_language": "J1QL",
+        "query": "Find change_pipeline where testing.automated = true and validation.automated = true and pre_deployment = true",
+        "query_nlp": "Identify change pipelines that perform automated testing and validation prior to deployment.",
+        "result_summary": "Changes undergo automated testing and validation before deployment.",
+        "data_link": "https://compliance.jupiterone.com/fedramp20x/reports/ksi-cmt-03.json"
+      }
+    },
+    {
+      "ksi_id": "KSI-CMT-04",
+      "description": "Have a documented change management procedure",
+      "status": "True",
+      "method": "Automated",
+      "validation_criteria": [
+        {
+          "id": "FRR-KSI-CMT-04",
+          "description": "Maintain a documented and accessible change management policy or procedure."
+        }
+      ],
+      "evidence": {
+        "query_language": "J1QL",
+        "query": "Find policy where name = 'Change Management' and documented = true and reviewed = true",
+        "query_nlp": "Find the documented and reviewed change management policy.",
+        "result_summary": "Change management procedure is documented and regularly reviewed.",
+        "data_link": "https://compliance.jupiterone.com/fedramp20x/reports/ksi-cmt-04.json"
+      }
+    },
+    {
+      "ksi_id": "KSI-CMT-05",
+      "description": "Evaluate the risk and potential impact of any change",
+      "status": "True",
+      "method": "Automated",
+      "validation_criteria": [
+        {
+          "id": "FRR-KSI-CMT-05",
+          "description": "Risk and impact assessments must be performed for all proposed changes."
+        }
+      ],
+      "evidence": {
+        "query_language": "J1QL",
+        "query": "Find change_request where risk_assessed = true and impact_analysis.completed = true",
+        "query_nlp": "Find change requests where both risk assessment and impact analysis were completed.",
+        "result_summary": "All changes are evaluated for risk and potential impact prior to implementation.",
+        "data_link": "https://compliance.jupiterone.com/fedramp20x/reports/ksi-cmt-05.json"
+      }
+    }
+  ]
+}
