@@ -1,0 +1,80 @@
+{
+  "ksi_validations": [
+    {
+      "ksi_id": "KSI-RPL-01",
+      "description": "Define Recovery Time Objectives (RTO) and Recovery Point Objectives (RPO)",
+      "status": "True",
+      "method": "Automated",
+      "validation_criteria": [
+        {
+          "id": "FRR-KSI-RPL-01",
+          "description": "Documented RTO and RPO are defined for each critical system."
+        }
+      ],
+      "evidence": {
+        "query_language": "J1QL",
+        "query": "Find system with recovery_time_objective != null and recovery_point_objective != null return system.name, recovery_time_objective, recovery_point_objective",
+        "query_nlp": "Identify systems with defined Recovery Time Objectives (RTO) and Recovery Point Objectives (RPO).",
+        "result_summary": "All critical systems have defined RTO and RPO values.",
+        "data_link": "https://compliance.jupiterone.com/fedramp20x/reports/ksi-rpl-01.json"
+      }
+    },
+    {
+      "ksi_id": "KSI-RPL-02",
+      "description": "Develop and maintain a recovery plan that aligns with the defined recovery objectives",
+      "status": "True",
+      "method": "Automated",
+      "validation_criteria": [
+        {
+          "id": "FRR-KSI-RPL-02",
+          "description": "Each critical system has an associated and current recovery plan aligned with its RTO/RPO."
+        }
+      ],
+      "evidence": {
+        "query_language": "J1QL",
+        "query": "Find system with recovery_plan.exists = true and recovery_plan.last_reviewed_within_days <= 365",
+        "query_nlp": "Find systems with an associated recovery plan that has been reviewed within the past year.",
+        "result_summary": "Recovery plans are in place and current for all critical systems.",
+        "data_link": "https://compliance.jupiterone.com/fedramp20x/reports/ksi-rpl-02.json"
+      }
+    },
+    {
+      "ksi_id": "KSI-RPL-03",
+      "description": "Perform system backups aligned with recovery objectives",
+      "status": "True",
+      "method": "Automated",
+      "validation_criteria": [
+        {
+          "id": "FRR-KSI-RPL-03",
+          "description": "Critical systems are backed up at a frequency that aligns with the defined RPO."
+        }
+      ],
+      "evidence": {
+        "query_language": "J1QL",
+        "query": "Find aws_backup_plan where frequency <= system.recovery_point_objective",
+        "query_nlp": "Identify AWS backup plans that meet or exceed the frequency defined in system RPOs.",
+        "result_summary": "System backup frequency aligns with RPO requirements.",
+        "data_link": "https://compliance.jupiterone.com/fedramp20x/reports/ksi-rpl-03.json"
+      }
+    },
+    {
+      "ksi_id": "KSI-RPL-04",
+      "description": "Regularly test the capability to recover from incidents and contingencies",
+      "status": "True",
+      "method": "Automated",
+      "validation_criteria": [
+        {
+          "id": "FRR-KSI-RPL-04",
+          "description": "Recovery tests are performed regularly and results are reviewed."
+        }
+      ],
+      "evidence": {
+        "query_language": "J1QL",
+        "query": "Find recovery_test where last_tested_within_days <= 180 and result = 'successful'",
+        "query_nlp": "Find recovery tests completed within the past 180 days that were successful.",
+        "result_summary": "Recovery capabilities are regularly tested and have passed successfully.",
+        "data_link": "https://compliance.jupiterone.com/fedramp20x/reports/ksi-rpl-04.json"
+      }
+    }
+  ]
+}
