@@ -1,0 +1,182 @@
+{
+  "id": "KSI-SVC-01",
+  "title": "Harden and review network and system configurations",
+  "validation": {
+    "status": true,
+    "method": "Automated",
+    "validation_criteria": [
+      {
+        "id": "FRR-KSI-SVC-01",
+        "description": "Baseline hardened configurations are applied and reviewed regularly."
+      }
+    ],
+    "evidence": {
+      "query_language": "J1QL",
+      "query": "Find configuration_baseline where hardened = true and review.cycle <= 30d",
+      "query_nlp": "Find configuration baselines that are hardened and reviewed within the past 30 days.",
+      "result_summary": "Hardened configurations are applied and reviewed monthly.",
+      "data_link": "https://compliance.jupiterone.com/fedramp20x/reports/ksi-svc-01.json"
+    },
+    "3pao_verification": {
+      "status": "Verified",
+      "verifier": "FedRAMP C3PAO",
+      "notes": "Reviewed evidence of hardened baselines and recurring reviews."
+    }
+  }
+},
+{
+  "id": "KSI-SVC-02",
+  "title": "Encrypt or otherwise secure network traffic",
+  "validation": {
+    "status": true,
+    "method": "Automated",
+    "validation_criteria": [
+      {
+        "id": "FRR-KSI-SVC-02",
+        "description": "All network traffic is encrypted or tunneled securely."
+      }
+    ],
+    "evidence": {
+      "query_language": "J1QL",
+      "query": "Find network_connection where encryption.protocol in ('TLS', 'IPSec') and encryption.status = 'enabled'",
+      "query_nlp": "Identify network connections secured with TLS or IPSec encryption.",
+      "result_summary": "All network traffic is encrypted using TLS or IPSec.",
+      "data_link": "https://compliance.jupiterone.com/fedramp20x/reports/ksi-svc-02.json"
+    },
+    "3pao_verification": {
+      "status": "Verified",
+      "verifier": "FedRAMP C3PAO",
+      "notes": "Encryption of network traffic confirmed across all service endpoints."
+    }
+  }
+},
+{
+  "id": "KSI-SVC-03",
+  "title": "Encrypt all federal and sensitive information at rest",
+  "validation": {
+    "status": true,
+    "method": "Automated",
+    "validation_criteria": [
+      {
+        "id": "FRR-KSI-SVC-03",
+        "description": "Storage volumes and databases encrypt sensitive and federal data at rest."
+      }
+    ],
+    "evidence": {
+      "query_language": "J1QL",
+      "query": "Find aws_s3_bucket where encryption.enabled = true | Find aws_ebs_volume where encryption = true | Find aws_rds_instance where storage_encrypted = true",
+      "query_nlp": "Find S3 buckets, EBS volumes, and RDS instances that have encryption at rest enabled.",
+      "result_summary": "All storage services encrypt sensitive and federal data at rest.",
+      "data_link": "https://compliance.jupiterone.com/fedramp20x/reports/ksi-svc-03.json"
+    },
+    "3pao_verification": {
+      "status": "Verified",
+      "verifier": "FedRAMP C3PAO",
+      "notes": "Validated storage encryption settings on AWS services."
+    }
+  }
+},
+{
+  "id": "KSI-SVC-04",
+  "title": "Manage configuration centrally",
+  "validation": {
+    "status": true,
+    "method": "Automated",
+    "validation_criteria": [
+      {
+        "id": "FRR-KSI-SVC-04",
+        "description": "System configurations are managed and enforced centrally."
+      }
+    ],
+    "evidence": {
+      "query_language": "J1QL",
+      "query": "Find configuration_item where managed_by in ('aws_config', 'systems_manager') and enforcement = true",
+      "query_nlp": "Find configurations that are centrally managed by AWS Config or Systems Manager and enforcement is active.",
+      "result_summary": "All configurations are centrally managed and enforced.",
+      "data_link": "https://compliance.jupiterone.com/fedramp20x/reports/ksi-svc-04.json"
+    },
+    "3pao_verification": {
+      "status": "Verified",
+      "verifier": "FedRAMP C3PAO",
+      "notes": "Confirmed use of centralized configuration tools."
+    }
+  }
+},
+{
+  "id": "KSI-SVC-05",
+  "title": "Enforce system and information resource integrity through cryptographic means",
+  "validation": {
+    "status": true,
+    "method": "Automated",
+    "validation_criteria": [
+      {
+        "id": "FRR-KSI-SVC-05",
+        "description": "Use cryptographic signatures or checksums to verify integrity of resources."
+      }
+    ],
+    "evidence": {
+      "query_language": "J1QL",
+      "query": "Find integrity_monitoring where crypto_verification = true",
+      "query_nlp": "Identify systems where cryptographic integrity verification is enabled.",
+      "result_summary": "Cryptographic methods are used to monitor and enforce integrity.",
+      "data_link": "https://compliance.jupiterone.com/fedramp20x/reports/ksi-svc-05.json"
+    },
+    "3pao_verification": {
+      "status": "Verified",
+      "verifier": "FedRAMP C3PAO",
+      "notes": "Integrity enforcement through cryptographic checks confirmed."
+    }
+  }
+},
+{
+  "id": "KSI-SVC-06",
+  "title": "Use automated key management systems to manage, protect, and regularly rotate digital keys and certificates",
+  "validation": {
+    "status": true,
+    "method": "Automated",
+    "validation_criteria": [
+      {
+        "id": "FRR-KSI-SVC-06",
+        "description": "Digital keys and certs are automatically rotated using a KMS or HSM."
+      }
+    ],
+    "evidence": {
+      "query_language": "J1QL",
+      "query": "Find aws_kms_key where rotation.enabled = true and status = 'active'",
+      "query_nlp": "Find AWS KMS keys with rotation enabled and currently active.",
+      "result_summary": "Key management is automated and key rotation is active.",
+      "data_link": "https://compliance.jupiterone.com/fedramp20x/reports/ksi-svc-06.json"
+    },
+    "3pao_verification": {
+      "status": "Verified",
+      "verifier": "FedRAMP C3PAO",
+      "notes": "Confirmed automation and rotation of cryptographic keys."
+    }
+  }
+},
+{
+  "id": "KSI-SVC-07",
+  "title": "Use a consistent, risk-informed approach for applying security patches",
+  "validation": {
+    "status": true,
+    "method": "Automated",
+    "validation_criteria": [
+      {
+        "id": "FRR-KSI-SVC-07",
+        "description": "Patching cadence and priorities are based on severity and asset criticality."
+      }
+    ],
+    "evidence": {
+      "query_language": "J1QL",
+      "query": "Find patch where applied = true and risk_rating in ('High', 'Critical') and patch_age <= 30d",
+      "query_nlp": "Find high or critical patches applied within the past 30 days.",
+      "result_summary": "Critical patches are applied within 30 days based on risk prioritization.",
+      "data_link": "https://compliance.jupiterone.com/fedramp20x/reports/ksi-svc-07.json"
+    },
+    "3pao_verification": {
+      "status": "Verified",
+      "verifier": "FedRAMP C3PAO",
+      "notes": "Risk-based patching strategy validated through evidence."
+    }
+  }
+}
