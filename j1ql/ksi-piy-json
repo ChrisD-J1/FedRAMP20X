@@ -1,0 +1,137 @@
+{
+  "ksi_validations": [
+    {
+      "ksi_id": "KSI-PIY-01",
+      "description": "Have an up-to-date information resource inventory or code defining all deployed assets, software, and services",
+      "status": "True",
+      "method": "Automated",
+      "validation_criteria": [
+        {
+          "id": "FRR-KSI-PIY-01",
+          "description": "Maintain an accurate and current inventory of all assets, software, and services."
+        }
+      ],
+      "evidence": {
+        "query_language": "J1QL",
+        "query": "Find asset where inventory_status = 'current' and last_updated < 30d",
+        "query_nlp": "Identify assets with up-to-date inventory status and recent updates.",
+        "result_summary": "Inventory of deployed assets is current and regularly updated.",
+        "data_link": "https://compliance.jupiterone.com/fedramp20x/reports/ksi-piy-01.json"
+      }
+    },
+    {
+      "ksi_id": "KSI-PIY-02",
+      "description": "Have policies outlining the security objectives of all information resources",
+      "status": "True",
+      "method": "Automated",
+      "validation_criteria": [
+        {
+          "id": "FRR-KSI-PIY-02",
+          "description": "Maintain security policies that define the objectives for all information resources."
+        }
+      ],
+      "evidence": {
+        "query_language": "J1QL",
+        "query": "Find policy where covers = 'information_resources' and objectives_defined = true",
+        "query_nlp": "Find policies that define security objectives for information resources.",
+        "result_summary": "Security policies define objectives for all information resources.",
+        "data_link": "https://compliance.jupiterone.com/fedramp20x/reports/ksi-piy-02.json"
+      }
+    },
+    {
+      "ksi_id": "KSI-PIY-03",
+      "description": "Maintain a vulnerability disclosure program",
+      "status": "True",
+      "method": "Automated",
+      "validation_criteria": [
+        {
+          "id": "FRR-KSI-PIY-03",
+          "description": "A vulnerability disclosure program is published and accessible."
+        }
+      ],
+      "evidence": {
+        "query_language": "J1QL",
+        "query": "Find program where type = 'vulnerability_disclosure' and published = true",
+        "query_nlp": "Find published vulnerability disclosure programs.",
+        "result_summary": "Vulnerability disclosure program is publicly available.",
+        "data_link": "https://compliance.jupiterone.com/fedramp20x/reports/ksi-piy-03.json"
+      }
+    },
+    {
+      "ksi_id": "KSI-PIY-04",
+      "description": "Build security considerations into the Software Development Lifecycle and align with CISA Secure By Design principles",
+      "status": "True",
+      "method": "Automated",
+      "validation_criteria": [
+        {
+          "id": "FRR-KSI-PIY-04",
+          "description": "Security is integrated into SDLC and follows Secure By Design principles."
+        }
+      ],
+      "evidence": {
+        "query_language": "J1QL",
+        "query": "Find sdlc_stage where includes_security_controls = true and aligns_with = 'CISA_Secure_By_Design'",
+        "query_nlp": "Identify SDLC stages where security controls are implemented and aligned with CISA principles.",
+        "result_summary": "Security is built into SDLC and aligned with CISA Secure By Design.",
+        "data_link": "https://compliance.jupiterone.com/fedramp20x/reports/ksi-piy-04.json"
+      }
+    },
+    {
+      "ksi_id": "KSI-PIY-05",
+      "description": "Document methods used to evaluate information resource implementations",
+      "status": "True",
+      "method": "Automated",
+      "validation_criteria": [
+        {
+          "id": "FRR-KSI-PIY-05",
+          "description": "Evaluation methods for information resource implementations are documented."
+        }
+      ],
+      "evidence": {
+        "query_language": "J1QL",
+        "query": "Find documentation where type = 'implementation_evaluation' and covers = 'information_resources'",
+        "query_nlp": "Find documents that describe how information resource implementations are evaluated.",
+        "result_summary": "Evaluation methods for information resources are documented.",
+        "data_link": "https://compliance.jupiterone.com/fedramp20x/reports/ksi-piy-05.json"
+      }
+    },
+    {
+      "ksi_id": "KSI-PIY-06",
+      "description": "Have a dedicated staff and budget for security with executive support, commensurate with the size, complexity, scope, and risk of the service offering",
+      "status": "True",
+      "method": "Automated",
+      "validation_criteria": [
+        {
+          "id": "FRR-KSI-PIY-06",
+          "description": "Security roles, staffing, budget, and executive support are defined and appropriate."
+        }
+      ],
+      "evidence": {
+        "query_language": "J1QL",
+        "query": "Find organization_unit where role = 'Security' and budget.allocated = true and executive_support = true",
+        "query_nlp": "Identify security teams with budget allocations and confirmed executive support.",
+        "result_summary": "Security staffing, budget, and executive support are in place.",
+        "data_link": "https://compliance.jupiterone.com/fedramp20x/reports/ksi-piy-06.json"
+      }
+    },
+    {
+      "ksi_id": "KSI-PIY-07",
+      "description": "Document risk management decisions for software supply chain security",
+      "status": "True",
+      "method": "Automated",
+      "validation_criteria": [
+        {
+          "id": "FRR-KSI-PIY-07",
+          "description": "Documented decisions and rationale regarding supply chain risk management."
+        }
+      ],
+      "evidence": {
+        "query_language": "J1QL",
+        "query": "Find risk_decision where context = 'supply_chain' and documented = true",
+        "query_nlp": "Find documented risk decisions related to software supply chain security.",
+        "result_summary": "Supply chain security decisions are documented and traceable.",
+        "data_link": "https://compliance.jupiterone.com/fedramp20x/reports/ksi-piy-07.json"
+      }
+    }
+  ]
+}
