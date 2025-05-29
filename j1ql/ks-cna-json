@@ -1,0 +1,201 @@
+{
+  "provider": {
+    "name": "JupiterOne, Inc.",
+    "service_offering": "JupiterOne GovNebula",
+    "description": "A cloud-native cyber asset visibility and compliance platform deployed on AWS GovCloud, providing security operations and continuous compliance monitoring."
+  },
+  "approach_summary": {
+    "rationale": "JupiterOne leverages its query-based security graph platform to collect and validate evidence against each KSI. Integrations with AWS GovCloud, IAM, CloudTrail, and other services enable automated evidence generation.",
+    "automation_coverage": "Approximately 90% of KSI validations are automated through JupiterOne's queries and enrichment rules."
+  },
+  "3pao_summary": {
+    "organization": "FedRAMP C3PAO",
+    "review_notes": "Reviewed JupiterOne's automated validation engine and verified query outputs for all KSI-CNA controls. Confirmed evidence integrity and traceability.",
+    "review_date": "2025-05-29"
+  },
+  "ksi_controls": [
+    {
+      "id": "KSI-CNA-01",
+      "title": "Configure ALL information resources to limit inbound and outbound traffic.",
+      "validation": {
+        "status": true,
+        "method": "Automated",
+        "validation_criteria": [
+          {
+            "id": "FRR-KSI-CNA-01",
+            "description": "Limit inbound and outbound network traffic on all information resources."
+          }
+        ],
+        "evidence": {
+          "query_language": "J1QL",
+          "query": "Find aws_network_acl where inboundRules.allow != 'all' and outboundRules.allow != 'all' | Find aws_security_group where rules.limit_traffic = true",
+          "query_nlp": "Retrieve network ACLs and security groups that restrict inbound and outbound traffic.",
+          "result_summary": "Network ACLs and security groups restrict inbound/outbound traffic appropriately.",
+          "data_link": "https://compliance.jupiterone.com/fedramp20x/reports/ksi-cna-01.json"
+        },
+        "3pao_verification": {
+          "status": "Verified",
+          "verifier": "FedRAMP C3PAO",
+          "notes": "Confirmed traffic restrictions on network ACLs and security groups."
+        }
+      }
+    },
+    {
+      "id": "KSI-CNA-02",
+      "title": "Design systems to minimize attack surface and minimize lateral movement if compromised.",
+      "validation": {
+        "status": true,
+        "method": "Automated",
+        "validation_criteria": [
+          {
+            "id": "FRR-KSI-CNA-02",
+            "description": "Enforce segmentation and micro-segmentation to reduce attack surface and lateral movement."
+          }
+        ],
+        "evidence": {
+          "query_language": "J1QL",
+          "query": "Find aws_vpc_subnet where network_acl_rules.segmented = true and aws_security_group where microsegmentation.enabled = true",
+          "query_nlp": "Find VPC subnets with enforced network segmentation and security groups with micro-segmentation enabled.",
+          "result_summary": "VPC subnets have enforced segmentation and security groups use micro-segmentation.",
+          "data_link": "https://compliance.jupiterone.com/fedramp20x/reports/ksi-cna-02.json"
+        },
+        "3pao_verification": {
+          "status": "Verified",
+          "verifier": "FedRAMP C3PAO",
+          "notes": "Validated network segmentation and micro-segmentation controls."
+        }
+      }
+    },
+    {
+      "id": "KSI-CNA-03",
+      "title": "Use logical networking and related capabilities to enforce traffic flow controls.",
+      "validation": {
+        "status": true,
+        "method": "Automated",
+        "validation_criteria": [
+          {
+            "id": "FRR-KSI-CNA-03",
+            "description": "Implement network routing, ACLs, and firewall rules to enforce traffic flow."
+          }
+        ],
+        "evidence": {
+          "query_language": "J1QL",
+          "query": "Find aws_route_table where routes.enforce_traffic_control = true | Find aws_security_group where rules.enforce_traffic_flow = true",
+          "query_nlp": "Retrieve route tables and security groups that enforce traffic flow controls.",
+          "result_summary": "Route tables and security groups enforce strict traffic flow controls.",
+          "data_link": "https://compliance.jupiterone.com/fedramp20x/reports/ksi-cna-03.json"
+        },
+        "3pao_verification": {
+          "status": "Verified",
+          "verifier": "FedRAMP C3PAO",
+          "notes": "Reviewed routing tables and firewall rules for traffic enforcement."
+        }
+      }
+    },
+    {
+      "id": "KSI-CNA-04",
+      "title": "Use immutable infrastructure with strictly defined functionality and privileges by default.",
+      "validation": {
+        "status": true,
+        "method": "Automated",
+        "validation_criteria": [
+          {
+            "id": "FRR-KSI-CNA-04",
+            "description": "Infrastructure components are immutable with minimal default privileges."
+          }
+        ],
+        "evidence": {
+          "query_language": "J1QL",
+          "query": "Find aws_ec2_instance where immutable = true and iam_role.privileges <= 'least-privilege'",
+          "query_nlp": "Find EC2 instances that are immutable and assigned IAM roles with least privilege.",
+          "result_summary": "All EC2 instances are immutable with least privilege IAM roles assigned.",
+          "data_link": "https://compliance.jupiterone.com/fedramp20x/reports/ksi-cna-04.json"
+        },
+        "3pao_verification": {
+          "status": "Verified",
+          "verifier": "FedRAMP C3PAO",
+          "notes": "Confirmed immutable infrastructure and least privilege enforcement."
+        }
+      }
+    },
+    {
+      "id": "KSI-CNA-05",
+      "title": "Have denial of service protection.",
+      "validation": {
+        "status": true,
+        "method": "Automated",
+        "validation_criteria": [
+          {
+            "id": "FRR-KSI-CNA-05",
+            "description": "Deploy DDoS protections such as AWS Shield or WAF."
+          }
+        ],
+        "evidence": {
+          "query_language": "J1QL",
+          "query": "Find aws_waf where ddos_protection.enabled = true | Find aws_shield where protection.enabled = true",
+          "query_nlp": "Identify AWS WAF and Shield protections that have DDoS protection enabled.",
+          "result_summary": "DDoS protections via AWS Shield and WAF are enabled on relevant resources.",
+          "data_link": "https://compliance.jupiterone.com/fedramp20x/reports/ksi-cna-05.json"
+        },
+        "3pao_verification": {
+          "status": "Verified",
+          "verifier": "FedRAMP C3PAO",
+          "notes": "Validated deployment and configuration of denial of service protections."
+        }
+      }
+    },
+    {
+      "id": "KSI-CNA-06",
+      "title": "Design systems for high availability and rapid recovery.",
+      "validation": {
+        "status": true,
+        "method": "Automated",
+        "validation_criteria": [
+          {
+            "id": "FRR-KSI-CNA-06",
+            "description": "Implement multi-AZ deployments and automated failover."
+          }
+        ],
+        "evidence": {
+          "query_language": "J1QL",
+          "query": "Find aws_elb where multi_az = true and failover.automated = true",
+          "query_nlp": "Find Elastic Load Balancers deployed across multiple AZs with automated failover configured.",
+          "result_summary": "Load balancers and services are deployed multi-AZ with automated failover configured.",
+          "data_link": "https://compliance.jupiterone.com/fedramp20x/reports/ksi-cna-06.json"
+        },
+        "3pao_verification": {
+          "status": "Verified",
+          "verifier": "FedRAMP C3PAO",
+          "notes": "Reviewed high availability architectures and failover mechanisms."
+        }
+      }
+    },
+    {
+      "id": "KSI-CNA-07",
+      "title": "Ensure cloud-native information resources are implemented based on host provider’s best practices and documented guidance.",
+      "validation": {
+        "status": true,
+        "method": "Automated",
+        "validation_criteria": [
+          {
+            "id": "FRR-KSI-CNA-07",
+            "description": "Adhere to AWS GovCloud best practices and documented architecture guidance."
+          }
+        ],
+        "evidence": {
+          "query_language": "J1QL",
+          "query": "Find aws_resource where compliance.with_host_provider_guidance = true",
+          "query_nlp": "Retrieve AWS resources compliant with AWS GovCloud best practices and guidance.",
+          "result_summary": "All cloud resources comply with AWS GovCloud best practices and documented guidance.",
+          "data_link": "https://compliance.jupiterone.com/fedramp20x/reports/ksi-cna-07.json"
+        },
+        "3pao_verification": {
+          "status": "Verified",
+          "verifier": "FedRAMP C3PAO",
+          "notes": "Confirmed compliance with AWS GovCloud best practices and documentation."
+        }
+      }
+    }
+  ],
+  "continuous_reporting": {
+    "proposal": "JupiterOne's continuous compliance pipeline generates daily validation reports for all KSI-CNA controls and pushes results to a secure S3 bucket. Webhook submission integration to FedRAMP can be
