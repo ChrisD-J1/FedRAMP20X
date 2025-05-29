@@ -17,6 +17,4 @@ Samples that have been submitted by others
 
 Sample OSCAL https://github.com/OSCAL-Foundation/OSCAL-Foundation/blob/main/content/catalog/json/FedRAMP%20RFC-0006%2020x%20Phase%20One%20Key%20Security%20Indicators.json
 
-Vanta https://trust.vanta.com/ click on FedRAMP20X links
-
-https://github.com/SunStone-Secure-LLC/artemis-fedramp20x
+https://github.com/FedRAMP/community/discussions/
