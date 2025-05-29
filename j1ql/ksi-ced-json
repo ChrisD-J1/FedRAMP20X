@@ -1,0 +1,42 @@
+{
+  "ksi_validations": [
+    {
+      "ksi_id": "KSI-CED-01",
+      "description": "Ensure all employees receive security awareness training",
+      "status": "True",
+      "method": "Automated",
+      "validation_criteria": [
+        {
+          "id": "FRR-KSI-CED-01",
+          "description": "Security awareness training is provided to all employees."
+        }
+      ],
+      "evidence": {
+        "query_language": "J1QL",
+        "query": "Find person with role = 'employee' as e that has training with type = 'security_awareness' as t return e.name, t.date",
+        "query_nlp": "Find all employees who have completed security awareness training and the date of completion.",
+        "result_summary": "All employees have received security awareness training.",
+        "data_link": "https://compliance.jupiterone.com/fedramp20x/reports/ksi-ced-01.json"
+      }
+    },
+    {
+      "ksi_id": "KSI-CED-02",
+      "description": "Require role-specific training for high risk roles, including at least roles with privileged access",
+      "status": "True",
+      "method": "Automated",
+      "validation_criteria": [
+        {
+          "id": "FRR-KSI-CED-02",
+          "description": "Role-specific training is provided for high-risk roles, including those with privileged access."
+        }
+      ],
+      "evidence": {
+        "query_language": "J1QL",
+        "query": "Find person with role in ('admin', 'security_engineer', 'cloud_ops') as p that has training with type = 'role_specific' as t return p.name, p.role, t.date",
+        "query_nlp": "Identify personnel in high-risk roles (e.g., admin, security engineer, cloud operations) who have completed role-specific training and the date completed.",
+        "result_summary": "High-risk personnel have completed role-specific training.",
+        "data_link": "https://compliance.jupiterone.com/fedramp20x/reports/ksi-ced-02.json"
+      }
+    }
+  ]
+}
