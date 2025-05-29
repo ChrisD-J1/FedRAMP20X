@@ -1,0 +1,61 @@
+{
+  "ksi_validations": [
+    {
+      "ksi_id": "KSI-INR-01",
+      "description": "Report incidents according to FedRAMP requirements and cloud service provider policies",
+      "status": "True",
+      "method": "Automated",
+      "validation_criteria": [
+        {
+          "id": "FRR-KSI-INR-01",
+          "description": "All incidents are reported according to defined policies and within the required FedRAMP timelines."
+        }
+      ],
+      "evidence": {
+        "query_language": "J1QL",
+        "query": "Find incident where reported_to_fedramp = true and reported_within_policy_timeline = true",
+        "query_nlp": "Identify incidents that were reported to FedRAMP within the required policy-defined timelines.",
+        "result_summary": "All qualifying incidents were reported in compliance with FedRAMP and internal policy timelines.",
+        "data_link": "https://compliance.jupiterone.com/fedramp20x/reports/ksi-inr-01.json"
+      }
+    },
+    {
+      "ksi_id": "KSI-INR-02",
+      "description": "Maintain a log of incidents and periodically review past incidents for patterns or vulnerabilities",
+      "status": "True",
+      "method": "Automated",
+      "validation_criteria": [
+        {
+          "id": "FRR-KSI-INR-02",
+          "description": "An up-to-date log of incidents is maintained and includes reviews for recurring patterns or systemic issues."
+        }
+      ],
+      "evidence": {
+        "query_language": "J1QL",
+        "query": "Find incident where reviewed_within_days <= 90 and pattern_analysis = true",
+        "query_nlp": "Find incidents that were reviewed within the last 90 days and included analysis for patterns or vulnerabilities.",
+        "result_summary": "Incident logs are up-to-date and regularly reviewed for patterns or vulnerabilities.",
+        "data_link": "https://compliance.jupiterone.com/fedramp20x/reports/ksi-inr-02.json"
+      }
+    },
+    {
+      "ksi_id": "KSI-INR-03",
+      "description": "Generate after action reports and regularly incorporate lessons learned into operations",
+      "status": "True",
+      "method": "Automated",
+      "validation_criteria": [
+        {
+          "id": "FRR-KSI-INR-03",
+          "description": "After action reports are created for all major incidents and lead to documented operational changes."
+        }
+      ],
+      "evidence": {
+        "query_language": "J1QL",
+        "query": "Find incident with after_action_report.exists = true and remediation_actions.documented = true",
+        "query_nlp": "Identify incidents with completed after action reports and documented remediation actions.",
+        "result_summary": "After action reports are generated and used to improve operational practices.",
+        "data_link": "https://compliance.jupiterone.com/fedramp20x/reports/ksi-inr-03.json"
+      }
+    }
+  ]
+}
