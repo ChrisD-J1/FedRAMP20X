@@ -1,0 +1,80 @@
+{
+  "ksi_validations": [
+    {
+      "ksi_id": "KSI-TPR-01",
+      "description": "Identify all third-party information resources",
+      "status": "True",
+      "method": "Automated",
+      "validation_criteria": [
+        {
+          "id": "FRR-KSI-TPR-01",
+          "description": "An inventory exists of all third-party services and vendors involved in information processing."
+        }
+      ],
+      "evidence": {
+        "query_language": "J1QL",
+        "query": "Find third_party_resource where type = 'information_resource'",
+        "query_nlp": "Find all third-party information resources used by the organization.",
+        "result_summary": "All third-party information resources have been identified.",
+        "data_link": "https://compliance.jupiterone.com/fedramp20x/reports/ksi-tpr-01.json"
+      }
+    },
+    {
+      "ksi_id": "KSI-TPR-02",
+      "description": "Regularly confirm that services handling federal information or are likely to impact the confidentiality, integrity, or availability of federal information are FedRAMP authorized and securely configured",
+      "status": "True",
+      "method": "Automated",
+      "validation_criteria": [
+        {
+          "id": "FRR-KSI-TPR-02",
+          "description": "All relevant third-party services are FedRAMP authorized and securely configured."
+        }
+      ],
+      "evidence": {
+        "query_language": "J1QL",
+        "query": "Find third_party_resource where handles = 'federal_information' and (fedramp_authorized = true and secure_configuration = true)",
+        "query_nlp": "Identify third-party services handling federal information that are FedRAMP authorized and securely configured.",
+        "result_summary": "Third-party services handling sensitive data are FedRAMP authorized and secure.",
+        "data_link": "https://compliance.jupiterone.com/fedramp20x/reports/ksi-tpr-02.json"
+      }
+    },
+    {
+      "ksi_id": "KSI-TPR-03",
+      "description": "Identify and prioritize mitigation of potential supply chain risks",
+      "status": "True",
+      "method": "Automated",
+      "validation_criteria": [
+        {
+          "id": "FRR-KSI-TPR-03",
+          "description": "Supply chain risks from third-party resources are identified and prioritized for mitigation."
+        }
+      ],
+      "evidence": {
+        "query_language": "J1QL",
+        "query": "Find risk where source = 'supply_chain' and associated_with = 'third_party_resource' and status in ('identified', 'prioritized')",
+        "query_nlp": "Find supply chain risks from third parties that are identified and prioritized.",
+        "result_summary": "Supply chain risks from third parties are actively managed.",
+        "data_link": "https://compliance.jupiterone.com/fedramp20x/reports/ksi-tpr-03.json"
+      }
+    },
+    {
+      "ksi_id": "KSI-TPR-04",
+      "description": "Monitor third-party software information resources for upstream vulnerabilities, with contractual notification requirements or active monitoring services",
+      "status": "True",
+      "method": "Automated",
+      "validation_criteria": [
+        {
+          "id": "FRR-KSI-TPR-04",
+          "description": "Third-party software is monitored for upstream vulnerabilities with contractual or technical safeguards."
+        }
+      ],
+      "evidence": {
+        "query_language": "J1QL",
+        "query": "Find third_party_resource where type = 'software' and (monitoring.enabled = true or contract.includes = 'vulnerability_notifications')",
+        "query_nlp": "Identify third-party software resources with vulnerability monitoring or notification contracts in place.",
+        "result_summary": "Upstream third-party software is monitored or contractually required to notify of vulnerabilities.",
+        "data_link": "https://compliance.jupiterone.com/fedramp20x/reports/ksi-tpr-04.json"
+      }
+    }
+  ]
+}
