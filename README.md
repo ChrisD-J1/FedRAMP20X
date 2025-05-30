@@ -1,4 +1,4 @@
-# FedRAMP KSI Validations and JSON Reporting Overview
+# FedRAMP20x Phase One Pilot KSI Validations and JSON Reporting Overview
 
 The FedRAMP Key Security Indicators (KSIs) define essential security controls that a cloud service offering must meet to ensure protection of federal data and compliance with FedRAMP standards. These KSIs cover multiple domains such as network security, service configuration, identity and access management, monitoring, change management, and more.
 
