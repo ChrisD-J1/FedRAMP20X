@@ -1,4 +1,0 @@
-| ID         | Validation Requirement                          | Control Information                                                      | Evidence Examples                             | Related NIST SP 800-53 Controls |
-|------------|------------------------------------------------|-------------------------------------------------------------------------|-----------------------------------------------|----------------------------------|
-| KSI-CE-01  | Ensure all employees receive security awareness training | All employees complete mandatory annual security awareness training tracked via an LMS. | Training logs, LMS completion reports, onboarding checklist | AT-2, AT-6                      |
-| KSI-CE-02  | Require role-specific training for high risk roles | Specialized training modules are delivered to privileged users and staff in sensitive roles. | Certificates, access to advanced courses, compliance training schedules | AT-3                           |
